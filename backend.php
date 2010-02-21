@@ -6,16 +6,16 @@ if (!$db) {
 mysql_select_db("tf2wp");
 
 $point = $_GET["point"];
-$attackers = "Red";
-$defenders = "Blue";
-$o = "r";
-$d = "b";
+$attackers = "Blue";
+$defenders = "Red";
+$o = "b";
+$d = "r";
 if ($point < 3) {
   $point = (6 - $point);
-  $attackers = "Blue";
-  $defenders = "Red";
-  $o = "b";
-  $d = "r";
+  $attackers = "Red";
+  $defenders = "Blue";
+  $o = "r";
+  $d = "b";
  }
 
 $arr = array("fightsWon" => 0, "roundsWon" => 0, "sampleSize" => 0);

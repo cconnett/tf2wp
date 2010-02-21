@@ -4,64 +4,63 @@ var blue = '#466578';
 var point = 3;
 
 function point1() {
-    document.all.cp1.style.backgroundColor = red;
-    document.all.cp2.style.backgroundColor = blue;
-    document.all.cp3.style.backgroundColor = blue;
-    document.all.cp4.style.backgroundColor = blue;
-    document.all.cp5.style.backgroundColor = blue;
+    document.all.cp1.style.backgroundColor = blue;
+    document.all.cp2.style.backgroundColor = red;
+    document.all.cp3.style.backgroundColor = red;
+    document.all.cp4.style.backgroundColor = red;
+    document.all.cp5.style.backgroundColor = red;
     point = 1;
     updateWP();
 }
 function point2() {
-    document.all.cp1.style.backgroundColor = red;
-    document.all.cp2.style.backgroundColor = red;
-    document.all.cp3.style.backgroundColor = blue;
-    document.all.cp4.style.backgroundColor = blue;
-    document.all.cp5.style.backgroundColor = blue;
+    document.all.cp1.style.backgroundColor = blue;
+    document.all.cp2.style.backgroundColor = blue;
+    document.all.cp3.style.backgroundColor = red;
+    document.all.cp4.style.backgroundColor = red;
+    document.all.cp5.style.backgroundColor = red;
     point = 2;
     updateWP();
 }
 function point3() {
-    document.all.cp1.style.backgroundColor = red;
-    document.all.cp2.style.backgroundColor = red;
+    document.all.cp1.style.backgroundColor = blue;
+    document.all.cp2.style.backgroundColor = blue;
     document.all.cp3.style.backgroundColor = gray;
-    document.all.cp4.style.backgroundColor = blue;
-    document.all.cp5.style.backgroundColor = blue;
+    document.all.cp4.style.backgroundColor = red;
+    document.all.cp5.style.backgroundColor = red;
     point = 3;
     updateWP();
 }
 function point4() {
-    document.all.cp1.style.backgroundColor = red;
-    document.all.cp2.style.backgroundColor = red;
-    document.all.cp3.style.backgroundColor = red;
-    document.all.cp4.style.backgroundColor = blue;
-    document.all.cp5.style.backgroundColor = blue;
+    document.all.cp1.style.backgroundColor = blue;
+    document.all.cp2.style.backgroundColor = blue;
+    document.all.cp3.style.backgroundColor = blue;
+    document.all.cp4.style.backgroundColor = red;
+    document.all.cp5.style.backgroundColor = red;
     point = 4;
     updateWP();
 }
 function point5() {
-    document.all.cp1.style.backgroundColor = red;
-    document.all.cp2.style.backgroundColor = red;
-    document.all.cp3.style.backgroundColor = red;
-    document.all.cp4.style.backgroundColor = red;
-    document.all.cp5.style.backgroundColor = blue;
+    document.all.cp1.style.backgroundColor = blue;
+    document.all.cp2.style.backgroundColor = blue;
+    document.all.cp3.style.backgroundColor = blue;
+    document.all.cp4.style.backgroundColor = blue;
+    document.all.cp5.style.backgroundColor = red;
     point = 5;
     updateWP();
 }
 
 var players = [];
-players["r1"] = 2;
-players["r2"] = 2;
-players["r4"] = 1;
-players["r7"] = 1;
-players["rc"] = 0;
-
 players["b1"] = 2;
 players["b2"] = 2;
 players["b4"] = 1;
 players["b7"] = 1;
 players["bc"] = 0;
 
+players["r1"] = 2;
+players["r2"] = 2;
+players["r4"] = 1;
+players["r7"] = 1;
+players["rc"] = 0;
 function killPlayer(tag) {
     document.getElementById(tag + '-on').style.visibility = 'hidden';
     document.getElementById(tag + '-off').style.visibility = 'visible';
@@ -121,7 +120,7 @@ function updateWP() {
     document.all.loading.style.visibility = 'visible';
     var url = "http://connett.net/tf2/wp/backend.php?";
 
-    var sides = ["r","b"];
+    var sides = ["b","r"];
     var positions = ["1","2","4","7","c"];
 
     var s;
