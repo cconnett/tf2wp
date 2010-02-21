@@ -1,0 +1,168 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>TF2 Win Probability Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="code.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Team Fortress 2 Win Probability Calculator</h1>
+      <div id="instructions">
+        <ul>
+          <li>Select the map from the drop down below.</li>
+          <li>Select the point being fought over by clicking on the
+          point in the hud.</li>
+          <li>Select the players alive and übercharge status by
+          clicking on the images at the bottom.</li>
+        </ul>
+      Win probability appears in the box at the right.
+	  </div>
+    </div>
+
+    <div id="output">
+      <img id="loading" src="images/loading.gif">
+      <h3>Win Probability</h3>
+      <table id="xhrTarget">
+        <tbody style="visibility:hidden">
+          <tr>
+            <td class="label">P(Red Caps):</td>
+            <td class="wp">50%</td>
+            <td class="moe">&plusmn;0%</td>
+          </tr>
+          <tr id="secondrow">
+            <td class="label">P(Red Wins Round):</td>
+            <td class="wp">50%</td>
+            <td class="moe">&plusmn;0%</td>
+          </tr>
+        </tbody>
+        <tbody style="visibility:hidden">
+          <tr>
+            <td class="label">P(Blue Caps):</td>
+            <td class="wp">50%</td>
+            <td class="moe">&plusmn;0%</td>
+          </tr>
+          <tr>
+            <td class="label">P(Blue Wins Round):</td>
+            <td class="wp">50%</td>
+            <td class="moe">&plusmn;0%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="mapdiv">
+      <h3>Map:</h3>
+      <select id="map" onchange="updateWP();">
+        <option value="%">All maps</option>
+        <option value="cp_badlands">Badlands</option>
+        <option value="cp_granary">Granary</option>
+      </select>
+    </div>
+
+    <div id="hud">
+      <h3>Control Points:</h3>
+      <span id="cp1" class="cp"
+            onclick="point1();"></span>
+      <span id="cp2" class="cp"
+            onclick="point2();"></span>
+      <span id="cp3" class="cp"
+           onclick="point3();"></span>
+      <span id="cp4" class="cp"
+           onclick="point4()"></span>
+      <span id="cp5" class="cp"
+           onclick="point5()"></span>
+    </div>
+
+    <div id="players">
+      <div id="red">
+        <h3>Red Team Status:</h3>
+        <div id="redclasses" class="classes">
+          <span id="r11" onclick="killPlayer('r11')">
+            <img src="images/scout_red.png" id="r11-on" class="active">
+            <img src="images/scout_inactive.png" id="r11-off" class="inactive">
+            <img src="images/x-red.png" id="r11-x" class="x">
+          </span>
+          <span id="r12" onclick="killPlayer('r12')">
+            <img src="images/scout_red.png" id="r12-on" class="active">
+            <img src="images/scout_inactive.png" id="r12-off" class="inactive">
+            <img src="images/x-red.png" id="r12-x" class="x">
+          </span>
+          <span id="r21" onclick="killPlayer('r21')">
+            <img src="images/soldier_red.png" id="r21-on" class="active">
+            <img src="images/soldier_inactive.png" id="r21-off" class="inactive">
+            <img src="images/x-red.png" id="r21-x" class="x">
+          </span>
+          <span id="r22" onclick="killPlayer('r22')">
+            <img src="images/soldier_red.png" id="r22-on" class="active"/>
+            <img src="images/soldier_inactive.png" id="r22-off" class="inactive"/>
+            <img src="images/x-red.png" id="r22-x" class="x"/>
+          </span>
+          <span id="r41" onclick="killPlayer('r41')">
+            <img src="images/demo_red.png" id="r41-on" class="active"/>
+            <img src="images/demo_inactive.png" id="r41-off" class="inactive"/>
+            <img src="images/x-red.png" id="r41-x" class="x"/>
+          </span>
+          <span id="r71" onclick="killPlayer('r71')">
+            <img src="images/medic_red.png" id="r71-on" class="active"/>
+            <img src="images/medic_inactive.png" id="r71-off" class="inactive"/>
+            <img src="images/x-red.png" id="r71-x" class="x"/>
+          </span>
+          <span id="rc" onclick="giveUber('rc')">
+            <img src="images/ubercharge-none.png" id="rc-off" class="active"/>
+            <img src="images/ubercharge-red.png" id="rc-on" class="inactive"/>
+          </span>
+        </div>
+      </div>
+      <div id="blue">
+        <h3>Blue Team Status:</h3>
+        <div id="blueclasses" class="classes">
+          <span id="b11" onclick="killPlayer('b11')">
+            <img src="images/scout_blu.png" id="b11-on" class="active"/>
+            <img src="images/scout_inactive.png" id="b11-off" class="inactive"/>
+            <img src="images/x-blue.png" id="b11-x" class="x"/>
+          </span>
+          <span id="b12" onclick="killPlayer('b12')">
+            <img src="images/scout_blu.png" id="b12-on" class="active"/>
+            <img src="images/scout_inactive.png" id="b12-off" class="inactive"/>
+            <img src="images/x-blue.png" id="b12-x" class="x"/>
+          </span>
+          <span id="b21" onclick="killPlayer('b21')">
+            <img src="images/soldier_blu.png" id="b21-on" class="active"/>
+            <img src="images/soldier_inactive.png" id="b21-off" class="inactive"/>
+            <img src="images/x-blue.png" id="b21-x" class="x"/>
+          </span>
+          <span id="b22" onclick="killPlayer('b22')">
+            <img src="images/soldier_blu.png" id="b22-on" class="active"/>
+            <img src="images/soldier_inactive.png" id="b22-off" class="inactive"/>
+	    <img src="images/x-blue.png" id="b22-x" class="x"/>
+          </span>
+          <span id="b41" onclick="killPlayer('b41')">
+            <img src="images/demo_blu.png" id="b41-on" class="active"/>
+            <img src="images/demo_inactive.png" id="b41-off" class="inactive"/>
+            <img src="images/x-blue.png" id="b41-x" class="x"/>
+          </span>
+          <span id="b71" onclick="killPlayer('b71')">
+            <img src="images/medic_blu.png" id="b71-on" class="active"/>
+            <img src="images/medic_inactive.png" id="b71-off" class="inactive"/>
+            <img src="images/x-blue.png" id="b71-x" class="x"/>
+          </span>
+          <span id="bc" onclick="giveUber('bc')">
+            <img src="images/ubercharge-none.png" id="bc-off" class="active"/>
+            <img src="images/ubercharge-blue.png" id="bc-on" class="inactive"/>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <p>Team Fortress 2 Win Probability Calculator &copy; 2010 by
+      Chris
+      "<a href="https://steamcommunity.com/id/AlphaChannel">AlphaChannel</a>"
+      Connett.  Margin of error is computed using an 90% confidence
+      interval.  Data gathered from 187 matches from #tf2.pug.na
+      (thanks Cinq!). For more information on how this works, see this
+      post (link forthcoming).</p>
+    </div>
+  </body>
+</html>

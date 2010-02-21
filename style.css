@@ -1,0 +1,118 @@
+html {
+    background-color: #46413E;
+    font-family: sans-serif;
+}
+
+#header {
+    color:silver;
+}
+h1 {
+    padding-left:.5em;
+}
+h3 {
+    margin:.25em;
+}
+
+#instructions {
+    margin:1em;
+    margin-bottom:2em;
+    border-bottom:1px solid black;
+}
+
+#hud {
+    padding-top:1.5em;
+}
+
+.cp {
+    background: gray;
+    width: 50px;
+    height:50px;
+    margin:5px;
+    float: left;
+    border-radius: 7px;
+    border:1px gainsboro solid;
+}
+
+#cp1 { background: #ab3738; }
+#cp2 { background: #ab3738; }
+#cp3 { background: gray; }
+#cp4 { background: #466578; }
+#cp5 { background: #466578; }
+
+#players {
+    /*position: relative;*/
+    padding-top: 2em;
+    margin-top: 2em;
+}
+
+#output {
+    border:5px solid black;
+    background:gainsboro;
+    float: right;
+    border-radius:5px;
+    padding:10px;
+    padding-bottom:1em;
+    font-size:110%;
+    margin-right:3em;
+    width: 20em;
+}
+
+#output h3 {
+    margin-top: 0px;
+}
+
+.label {
+    text-align:right;
+    padding-right:1em;
+}
+.wp {
+    color:darkred;
+    width: 5em;
+    text-align: right;
+}
+.moe {
+    color:darkblue;
+    text-align: left;
+    width:5em;
+}
+tbody {
+    border:5px solid black;
+    margin-bottom:10px;
+}
+
+.classes span {
+    position: relative;
+    top:-1em;
+}
+
+.classes span .inactive {
+    position:absolute;
+    left:0px;
+    visibility:hidden;
+}
+.classes span .x {
+    position:absolute;
+	left:0px;
+    visibility:hidden;
+}
+
+#footer {
+    color: silver;
+    border-top:1px solid black;
+    margin:1em;
+    padding: 0 1em 0 1em;
+    font-size:small;
+}
+#footer a:link {
+    color:silver;
+}
+#footer a:visited {
+    color:gray;
+}
+#loading {
+    float:right;
+    position:relative;
+    top:4px;
+    left:-4px;
+    visibility:hidden;
+}
