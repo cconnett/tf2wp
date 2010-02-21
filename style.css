@@ -33,11 +33,11 @@ h3 {
     border:1px gainsboro solid;
 }
 
-#cp1 { background: #ab3738; }
-#cp2 { background: #ab3738; }
+#cp1 { background: #466578; }
+#cp2 { background: #466578; }
 #cp3 { background: gray; }
-#cp4 { background: #466578; }
-#cp5 { background: #466578; }
+#cp4 { background: #ab3738; }
+#cp5 { background: #ab3738; }
 
 #players {
     /*position: relative;*/
