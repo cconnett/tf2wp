@@ -157,8 +157,7 @@ function recieveResponse() {
                 document.all.xhrTarget.innerHTML = xhr.responseText;
         }
         } else {
-            document.all.xhrTarget.innerHTML = "<p>Error with XMLHttpRequest:</p>";
-            document.all.xhrTarget.innerHTML += xhr.statusText;
+            document.all.xhrTarget.innerHTML = "<p>Error with XMLHttpRequest.</p>";
         }
         document.all.loading.style.visibility = 'hidden';
     }
