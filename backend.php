@@ -56,13 +56,14 @@ if ($arr["sampleSize"]) {
   $moe = "No data";
 }
 ?>
+<table>
 <tbody>
   <tr>
     <td class="label">P(<?php print $attackers ?> Caps):</td>
     <td class="wp"><?php print $fwp; ?>%</td>
     <td class="moe">&plusmn;<?php print $moe;?>%</td>
   </tr>
-  <tr id="secondrow">
+  <tr>
     <td class="label">P(<?php print $attackers ?> Wins Round):</td>
     <td class="wp"><?php print $rwp;?>%</td>
     <td class="moe">&plusmn;<?php print $moe;?>%</td>
@@ -76,10 +77,10 @@ if ($arr["sampleSize"]) {
   </tr>
   <tr>
     <td class="label">P(<?php print $defenders ?> Wins Round):</td>
-    <td class="wp">
-  <?php print 100-$rwp;?>%</td>
+    <td class="wp"><?php print 100-$rwp;?>%</td>
     <td class="moe">&plusmn;<?php print $moe;?>%</td>
   </tr>
 </tbody>
+</table>
 
 <?php mysql_close($db); ?>

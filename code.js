@@ -144,12 +144,19 @@ function updateWP() {
     url += "point=" + point;
 
     xhr.open("GET", url);
-    xhr.send()
+    xhr.onreadystatechange = recieveResponse;
+    xhr.send();
 }
-xhr.onreadystatechange = function() {
+function recieveResponse() {
     if (xhr.readyState == 4) {
-        if (xhr.status = 200) {
-            document.all.xhrTarget.innerHTML = xhr.responseText;
+        if (xhr.status == 200) {
+			if (xhr.responseText.indexOf("table") == -1) {
+			    // IE randomly strips the table tag from the responseText.
+				// Put it back if it has been stripped.
+                document.all.xhrTarget.innerHTML = "<table>" + xhr.responseText + "</table>";
+			} else {
+                document.all.xhrTarget.innerHTML = xhr.responseText;
+        }
         } else {
             document.all.xhrTarget.innerHTML = "<p>Error with XMLHttpRequest:</p>";
             document.all.xhrTarget.innerHTML += xhr.statusText;
