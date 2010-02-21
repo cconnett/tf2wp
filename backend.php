@@ -19,7 +19,10 @@ if ($point < 3) {
  }
 
 $arr = array("fightsWon" => 0, "roundsWon" => 0, "sampleSize" => 0);
-$query = "select fightsWon, roundsWon, sampleSize " .
+$query = "select " .
+  "sum(fightsWon) fightsWon, " .
+  "sum(roundsWon) roundsWon, " .
+  "sum(sampleSize) sampleSize " .
   "from wpSummary " .
   "where o1 = '" . mysql_real_escape_string($_GET[$o . "1"]) .
   "' and o2 = '" . mysql_real_escape_string($_GET[$o . "2"]) .
@@ -34,7 +37,9 @@ $query = "select fightsWon, roundsWon, sampleSize " .
   "' and map like '" . mysql_real_escape_string($_GET["map"]) .
   "' and point = '" . mysql_real_escape_string($point) . "'";
   $result = mysql_query($query, $db);
-
+if (mysql_error()) {
+  var_dump(mysql_error());
+ }
 if ($result) {
   $row = mysql_fetch_array($result);
   $arr["fightsWon"] += $row["fightsWon"];
