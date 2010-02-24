@@ -74,6 +74,8 @@ for($i = 0; $i < 2; $i += 1) {
 if ($arr["sampleSize"]) {
   $fwp = (int)round($arr["fightsWon"] / $arr["sampleSize"] * 100, 0);
   $rwp = (int)round($arr["roundsWon"] / $arr["sampleSize"] * 100, 0);
+  $dfwp = 100 - $fwp;
+  $drwp = 100 - $rwp;
   $moe = (int)round(0.82/sqrt($arr["sampleSize"]) * 100, 0);
   if ($moe == 0) {
     $moe = "< 0.5";
@@ -82,6 +84,8 @@ if ($arr["sampleSize"]) {
 } else {
   $fwp = "No data";
   $rwp = "No data";
+  $dfwp = "No data";
+  $drwp = "No data";
   $moe = "No data";
 }
 ?>
@@ -101,12 +105,12 @@ if ($arr["sampleSize"]) {
 <tbody>
   <tr>
     <td class="label">P(<?php print $defenders ?> Caps):</td>
-    <td class="wp"><?php print 100-$fwp;?>%</td>
+    <td class="wp"><?php print $dfwp;?>%</td>
     <td class="moe">&plusmn;<?php print $moe;?>%</td>
   </tr>
   <tr>
     <td class="label">P(<?php print $defenders ?> Wins Round):</td>
-    <td class="wp"><?php print 100-$rwp;?>%</td>
+    <td class="wp"><?php print $drwp;?>%</td>
     <td class="moe">&plusmn;<?php print $moe;?>%</td>
   </tr>
 </tbody>
