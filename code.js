@@ -161,4 +161,6 @@ function recieveResponse() {
         document.all.loading.style.visibility = 'hidden';
     }
 }
-window.onload = updateWP;
+$(document).ready(function() {
+    point3();
+})
