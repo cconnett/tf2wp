@@ -1,10 +1,29 @@
 html {
     background-color: #46413E;
     font-family: sans-serif;
+    color:lightgrey;
+}
+
+@font-face {
+    font-family: "TF2 Build";
+    src: url("fonts/tf2build.ttf");
+}
+
+@font-face {
+    font-family: "TF2 Secondary";
+    src: url("fonts/tf2secondary.ttf");
 }
 
 #header {
-    color:silver;
+    color:white;
+    margin:0;
+}
+#instructions {
+    font-family: "TF2 Secondary";
+}
+
+h1,h2,h3 {
+    font-family: "TF2 Build";
 }
 h1 {
     padding-left:.5em;
@@ -58,11 +77,13 @@ h3 {
 
 #output h3 {
     margin-top: 0px;
+    color: black;
 }
-
 .label {
     text-align:right;
     padding-right:1em;
+    font-family: "TF2 Secondary";
+    color: black;
 }
 .wp {
     color:darkred;
