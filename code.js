@@ -118,7 +118,7 @@ function updateWP() {
     xhr.abort();
 
     document.all.loading.style.visibility = 'visible';
-    var url = "http://connett.net/tf2/wp/backend.php?";
+    var url = "backend.php?";
 
     var sides = ["b","r"];
     var positions = ["1","2","4","7","c"];
