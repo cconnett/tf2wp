@@ -100,20 +100,20 @@ tbody {
     margin-bottom:10px;
 }
 
-.classes span {
+.classes {
     position: relative;
     top:-1em;
 }
-
-.classes span .inactive {
-    position:absolute;
-    left:0px;
-    visibility:hidden;
+.classes span {
+    position: relative;
 }
-.classes span .x {
-    position:absolute;
-	left:0px;
-    visibility:hidden;
+.active {
+    position: relative;
+}
+.inactive, .x {
+    position: absolute;
+    left: 0px;
+    visibility: hidden;
 }
 
 #footer {
