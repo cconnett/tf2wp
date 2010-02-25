@@ -1,66 +1,25 @@
-var gray = 'gray';
-var red = '#ab3738';
-var blue = '#466578';
 var point = 3;
 
-function point1() {
-    document.all.cp1.style.backgroundColor = blue;
-    document.all.cp2.style.backgroundColor = red;
-    document.all.cp3.style.backgroundColor = red;
-    document.all.cp4.style.backgroundColor = red;
-    document.all.cp5.style.backgroundColor = red;
-    point = 1;
-    updateWP();
-}
-function point2() {
-    document.all.cp1.style.backgroundColor = blue;
-    document.all.cp2.style.backgroundColor = blue;
-    document.all.cp3.style.backgroundColor = red;
-    document.all.cp4.style.backgroundColor = red;
-    document.all.cp5.style.backgroundColor = red;
-    point = 2;
-    updateWP();
-}
-function point3() {
-    document.all.cp1.style.backgroundColor = blue;
-    document.all.cp2.style.backgroundColor = blue;
-    document.all.cp3.style.backgroundColor = gray;
-    document.all.cp4.style.backgroundColor = red;
-    document.all.cp5.style.backgroundColor = red;
-    point = 3;
-    updateWP();
-}
-function point4() {
-    document.all.cp1.style.backgroundColor = blue;
-    document.all.cp2.style.backgroundColor = blue;
-    document.all.cp3.style.backgroundColor = blue;
-    document.all.cp4.style.backgroundColor = red;
-    document.all.cp5.style.backgroundColor = red;
-    point = 4;
-    updateWP();
-}
-function point5() {
-    document.all.cp1.style.backgroundColor = blue;
-    document.all.cp2.style.backgroundColor = blue;
-    document.all.cp3.style.backgroundColor = blue;
-    document.all.cp4.style.backgroundColor = blue;
-    document.all.cp5.style.backgroundColor = red;
-    point = 5;
+function setPoint(p) {
+    point = p;
+
+    var numBlue = p;
+    if (numBlue >= 3) {
+        numBlue -= 1;
+    }
+    var numRed = 6 - p;
+    if (numRed >= 3) {
+        numRed -= 1;
+    }
+
+    $('.cp').removeClass('bluecp');
+    $('.cp').removeClass('redcp');
+    $('.cp' + ':lt(' + numBlue + ')').addClass('bluecp');
+    $('.cp' + ':gt(' + (4 - numRed) + ')').addClass('redcp');
     updateWP();
 }
 
 var players = [];
-players["b1"] = 2;
-players["b2"] = 2;
-players["b4"] = 1;
-players["b7"] = 1;
-players["bc"] = 0;
-
-players["r1"] = 2;
-players["r2"] = 2;
-players["r4"] = 1;
-players["r7"] = 1;
-players["rc"] = 0;
 function killPlayer(tag) {
     document.getElementById(tag + '-on').style.visibility = 'hidden';
     document.getElementById(tag + '-off').style.visibility = 'visible';
@@ -71,11 +30,8 @@ function killPlayer(tag) {
     if (tag.charAt(1) == '7') {
         document.getElementById(tag.charAt(0) + 'c-on').style.visibility = 'hidden';
         document.getElementById(tag.charAt(0) + 'c-off').style.visibility = 'hidden';
-
         // Don't force the uber off here.  Do it when sending the XHR,
         // so the UI maintains uber state.
-
-        //players[tag.charAt(0) + 'c'] = 0;
     }
     updateWP();
 }
@@ -162,5 +118,17 @@ function recieveResponse() {
     }
 }
 $(document).ready(function() {
-    point3();
+    bookmark = location.hash.substring(1);
+    players["b1"] = 2;
+    players["b2"] = 2;
+    players["b4"] = 1;
+    players["b7"] = 1;
+    players["bc"] = 0;
+
+    players["r1"] = 2;
+    players["r2"] = 2;
+    players["r4"] = 1;
+    players["r7"] = 1;
+    players["rc"] = 0;
+    setPoint(3);
 })
