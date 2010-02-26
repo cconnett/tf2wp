@@ -105,6 +105,7 @@ function updateWP() {
     xhr.open("GET", url);
     xhr.onreadystatechange = recieveResponse;
     xhr.send();
+    $('#bookmark').attr('href', createBookmark());
 }
 function recieveResponse() {
     if (xhr.readyState == 4) {
@@ -168,9 +169,20 @@ function loadBookmark(bookmark) {
     return true;
 }
 
+function createBookmark() {
+    var bookmark = '#' + $('#map')[0].value + '/' + point;
+    for (var i = 0; i < stateKeys.length; i++) {
+        bookmark += state[stateKeys[i][0]];
+    }
+    return bookmark;
+}
+
 $(document).ready(function() {
     var bookmark = unescape(location.hash.substring(1));
     if (!loadBookmark(bookmark)) {
         loadBookmark('%/32211022110');
     }
+    $('#bookmark').click(function() {
+        location.hash = createBookmark();
+    });
 });

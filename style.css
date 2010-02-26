@@ -38,6 +38,10 @@ h3 {
     border-bottom:1px solid black;
 }
 
+#bookmark {
+    color:white;
+}
+
 #hud {
     padding-top:1.5em;
 }
