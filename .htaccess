@@ -1,5 +1,5 @@
 # MONTH
-<FilesMatch "\.(pdf|swf|gif|jpg|jpeg|png|ico)$">
+<FilesMatch "\.(pdf|swf|gif|jpg|jpeg|png|ico|ttf)$">
    Header set Cache-Control "max-age=2592000"
 </FilesMatch>
 # 10 minutes
