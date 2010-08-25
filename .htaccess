@@ -1,0 +1,12 @@
+# MONTH
+<FilesMatch "\.(pdf|swf|gif|jpg|jpeg|png|ico)$">
+   Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+# 10 minutes
+<FilesMatch "\.(html|htm|txt|css|js)$">
+   Header set Cache-Control "max-age=600"
+</FilesMatch>
+# DONT CACHE
+<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+   Header unset Cache-Control
+</FilesMatch>
