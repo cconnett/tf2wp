@@ -83,6 +83,8 @@ var xhr = new XMLHttpRequest();
 function updateWP() {
     xhr.abort();
 
+    location.hash = createBookmark();
+
     document.all.loading.style.visibility = 'visible';
     var url = "backend.php?";
 
@@ -105,18 +107,17 @@ function updateWP() {
     xhr.open("GET", url);
     xhr.onreadystatechange = recieveResponse;
     xhr.send();
-    $('#bookmark').attr('href', createBookmark());
 }
 function recieveResponse() {
     if (xhr.readyState == 4) {
-        if (xhr.status == 200) {
-			if (xhr.responseText.indexOf("table") == -1) {
-			    // IE randomly strips the table tag from the responseText.
-				// Put it back if it has been stripped.
-                document.all.xhrTarget.innerHTML = "<table>" + xhr.responseText + "</table>";
-			} else {
-                document.all.xhrTarget.innerHTML = xhr.responseText;
-        }
+	if (xhr.status == 200) {
+	    if (xhr.responseText.indexOf("table") == -1) {
+		// IE randomly strips the table tag from the responseText.
+		// Put it back if it has been stripped.
+		document.all.xhrTarget.innerHTML = "<table>" + xhr.responseText + "</table>";
+	    } else {
+		document.all.xhrTarget.innerHTML = xhr.responseText;
+	    }
         } else {
         }
         document.all.loading.style.visibility = 'hidden';
@@ -180,9 +181,6 @@ function createBookmark() {
 $(document).ready(function() {
     var bookmark = unescape(location.hash.substring(1));
     if (!loadBookmark(bookmark)) {
-        loadBookmark('%/32211022110');
+	loadBookmark('%/32211022110');
     }
-    $('#bookmark').click(function() {
-        location.hash = createBookmark();
-    });
 });
